@@ -15,10 +15,24 @@ class Router
         foreach ($arr as $key => $val) {
             $this->add($key, $val);
         }
+        debug($this->routes);
+        $this->run();
     }
 
     public function add($route, $params)
     {
-        echo '<p>' . $route . '</p>';
+        $route = '#^'.$route.'$#';
+        $this->routes[$route] = $params;
+    }
+
+    public function match(){
+        debug($_SERVER);
+        $url = $_SERVER['REQUEST_URI'];
+    }
+    public function run(){
+
+        echo 1;
+        $this->match();
+        echo 1;
     }
 }
